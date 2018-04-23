@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', startGame)
 
 // Define your `board` object here!
-var board = {
+/* var board = {
 
 cells:[
 {row: 0, col: 0, isMine: "", isMarked: "", hidden: true},
@@ -14,6 +14,27 @@ cells:[
 {row: 2, col: 1, isMine: "", isMarked: "", hidden: true},
 {row: 2, col: 2, isMine: "", isMarked: "", hidden: true}
 ]
+}
+*/
+
+var board;
+var gridSize = 6;
+
+function makeBoard () {
+  board = {
+    cells:[]
+  }
+  for (var x = 0; x < gridSize; x++) {
+    for (var y = 0; y < gridSize; y ++) {
+      board.cells.push ({
+        row: x,
+        col: y,
+        isMine: Math.floor(Math.random()*1.3),
+        isMarked: false,
+        hidden: true
+      })
+    }
+  }
 }
 
 function startGame () {
@@ -110,3 +131,16 @@ return count;
 
 
 }
+
+
+//Reset board function
+
+function resetBoard () {
+    removeListeners ();
+    restart ();
+  }
+  
+  function restart () {
+    var board = document.getElementsByClassName('board')[0];
+    board.innerHTML = '';
+  }
