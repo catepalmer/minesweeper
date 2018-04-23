@@ -54,7 +54,7 @@ document.addEventListener('click', checkForWin);
 document.addEventListener('contextmenu', checkForWin);
 
 
-for (i = 0; i < board.cells.length; i++) {
+for (var i = 0; i < board.cells.length; i++) {
 board.cells[i].surroundingMines = countSurroundingMines (board.cells[i]);
 }
 lib.initBoard();
@@ -114,11 +114,11 @@ function countSurroundingMines (cell) {
 // Once you have the correct count, return it (return count).
 // Once you've got the counts working to your satisfaction, commit your code!
 
-var surrounding = lib.getSurroundingCells(cell.row, cell.col);
+var surroundingCells = lib.getSurroundingCells(cell.row, cell.col);
 var count = 0;
-for (i = 0; i < surrounding.length; i++) {
+for (i = 0; i < surroundingCells.length; i++) {
 
-if (surrounding[i].isMine == true) {
+if (surroundingCells[i].isMine == true) {
 
 count++;
 }
